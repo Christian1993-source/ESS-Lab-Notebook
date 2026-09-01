@@ -30,8 +30,8 @@ const sectionOrder = [
     sampleCalculationsKey: "processedDataSampleCalculations",
     label: "Processing Raw Data"
   },
-  { type: "text", key: "presentingProcessedData", label: "Presenting Processed Data" },
-  { type: "tool", key: "analysisConclusion", label: "Presenting Processed Data" },
+  { type: "tool", key: "presentingProcessedData", label: "Presenting Processed Data" },
+  { type: "text", key: "analysisConclusion", label: "Analysis and Conclusion" },
   { type: "text", key: "evaluation", label: "Evaluation" },
   { type: "text", key: "weaknessesLimitations", label: "Weaknesses and Limitations" },
   { type: "text", key: "improvements", label: "Improving the Investigation" },
