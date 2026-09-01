@@ -623,48 +623,66 @@ function getEssExampleReport() {
     activeSections: createDefaultActiveSections(),
     status: "Draft",
     sections: {
-      backgroundInformation: "Agricultural fertilizers can increase nitrate loading in nearby freshwater systems. Elevated nutrient concentrations may contribute to eutrophication, altered dissolved oxygen and changes in aquatic community structure. This investigation examines a local stream system downstream from a drainage point.",
-      researchQuestion: "How does distance downstream from an agricultural drainage outlet (m) affect nitrate concentration (mg/L) in stream water under comparable weather and flow conditions?",
-      alternateHypothesis: "Nitrate concentration will be highest near the drainage outlet and will decrease with downstream distance because of dilution, biological uptake and dispersion.",
-      nullHypothesis: "Distance downstream from the drainage outlet has no effect on measured nitrate concentration.",
-      strategy: "A nutrient-management strategy can reduce fertilizer loss through calibrated application rates, vegetated buffer strips and timing restrictions. A tension exists between agricultural productivity and the environmental goal of reducing nutrient loading in freshwater ecosystems.",
-      methodology: "Select five downstream distances and collect six replicate water samples at each distance during the same sampling period. Use identical clean containers, sample at comparable depth, record recent rainfall and flow observations, and determine nitrate concentration using the same calibrated test method for every sample.",
-      variablesNotes: "Keep sampling depth, time window, container type, analytical method and recent weather conditions as consistent as possible. Record any unavoidable variation.",
-      safetyEthicsEnvironment: "Use gloves and eye protection when handling reagents. Sample only from stable banks, work with a partner and avoid disturbing habitat. Dispose of testing reagents according to laboratory guidance and return no test chemicals to the stream.",
-      rawDataNotes: "Record water appearance, flow conditions, weather and any unusual observations at each site. Use consistent units and instrument precision.",
-      processedDataNotes: "Calculate the mean nitrate concentration and spread for each distance. Compare the pattern across sites and identify any outliers before statistical interpretation.",
-      processedDataSampleCalculations: "Mean nitrate concentration = sum of replicate concentrations / number of replicates. Show one complete worked example with units.",
-      presentingProcessedData: "Plot mean nitrate concentration against downstream distance. Label both axes with units, include uncertainty or spread where appropriate and describe the main pattern and outliers beneath the graph.",
-      analysisConclusion: "Interpret the strength and direction of the observed pattern, address uncertainty and sampling reliability, and use the processed data to answer the research question and evaluate both hypotheses.",
-      evaluation: "Evaluate how flow variation, recent rainfall, test resolution, site access and the limited sampling period affect the reliability, validity and scope of the conclusion.",
-      weaknessesLimitations: "A single sampling period limits temporal representativeness. Field-test resolution may reduce precision, and uncontrolled tributary inputs may influence downstream nitrate concentration.",
-      improvements: "Repeat sampling across multiple dates, use a higher-resolution analytical method, measure stream discharge and add upstream reference sites to distinguish agricultural input from background nitrate.",
-      bibliography: "Add at least three sources actually used in the report and format them consistently in APA 7 or another accepted citation style."
+      backgroundInformation: "Nitrate is a soluble form of nitrogen used in agricultural fertilizers. Rainfall and irrigation can transport nitrate from soil into streams, where excessive nutrient loading may stimulate algal growth, reduce dissolved oxygen and alter freshwater communities (U.S. Environmental Protection Agency, n.d.). Concentrations near a drainage outlet may be higher than those farther downstream because dilution, biological uptake and dispersion progressively reduce the initial input. This investigation uses distance from an agricultural drain as a spatial indicator of how nitrate concentration changes within one stream reach.",
+      researchQuestion: "How does distance downstream from an agricultural drainage outlet (0, 25, 50, 100 and 200 m) affect the mean nitrate concentration (mg/L) of stream water collected during the same two-hour sampling period?",
+      alternateHypothesis: "Mean nitrate concentration will decrease as distance downstream increases. Water collected closest to the agricultural drain is expected to contain the greatest nitrate concentration because it receives the most direct runoff input; farther downstream, dilution, dispersion and biological uptake should reduce the concentration.",
+      nullHypothesis: "There will be no meaningful relationship between distance downstream from the agricultural drainage outlet and mean nitrate concentration in the stream water.",
+      strategy: "A practical nutrient-management strategy is the use of vegetated riparian buffer strips between cultivated land and the stream. Dense vegetation slows surface runoff, promotes infiltration and absorbs part of the nitrogen before it enters the water. Farmers may view buffers as a loss of productive land and an additional maintenance cost, while downstream residents and conservation groups may prioritize cleaner water, biodiversity and reduced eutrophication risk. Cost-sharing programs and site-specific buffer widths can reduce this tension by supporting both agricultural production and water-quality protection.",
+      methodology: "Five sampling locations were marked at 0, 25, 50, 100 and 200 m downstream from the drain. At each location, three water samples were collected from approximately 10 cm below the surface, near the center of flow, using clean 100 mL containers. All 15 samples were collected between 09:00 and 11:00 on the same day after 48 hours without rain. Nitrate concentration was measured with the same calibrated colorimetric test kit (resolution 0.1 mg/L). Containers were rinsed with site water before collection, and the test procedure, reaction time and viewing conditions were kept constant. Results and qualitative observations were recorded immediately.",
+      variablesNotes: "Distance downstream was deliberately changed across five locations. Nitrate concentration was measured three times at each distance. Sampling depth, collection period, container volume, analytical method, reaction time and recent weather were controlled to reduce variation unrelated to distance.",
+      safetyEthicsEnvironment: "Closed shoes, nitrile gloves and safety glasses were worn. Sampling was completed from stable access points with a partner; deep or fast-flowing water was avoided. No vegetation or organisms were removed. Used test reagents and sample residues were returned to the laboratory for disposal and were not released into the stream. The investigation involved no human participants and did not identify the farm owner.",
+      rawDataNotes: "Water was clear at 0-50 m and became slightly more turbid near 100-200 m after a small tributary joined the stream. Flow appeared steady throughout the sampling period. No sample was lost, and all readings were recorded to the 0.1 mg/L resolution of the test kit.",
+      processedDataNotes: "For each distance, the three nitrate measurements were used to calculate a mean and sample standard deviation. Mean concentration declined from 8.2 mg/L at 0 m to 3.1 mg/L at 200 m. The standard deviations were small (0.10-0.20 mg/L), showing that replicates at each site were consistent. The processed values should be plotted as a scatter plot with distance on the x-axis, mean nitrate concentration on the y-axis and standard-deviation error bars.",
+      processedDataSampleCalculations: "Example for 25 m:\nMean = (7.1 + 7.3 + 7.0) / 3 = 7.13 mg/L\nSample SD = sqrt([(-0.03)^2 + (0.17)^2 + (-0.13)^2] / (3 - 1)) = 0.15 mg/L\nReported result = 7.13 +/- 0.15 mg/L.",
+      analysisConclusion: "The processed data support the alternate hypothesis and do not support the null hypothesis. Mean nitrate concentration decreased at every successive distance, from 8.2 mg/L at the outlet to 3.1 mg/L at 200 m, a reduction of approximately 62%. The small and mostly non-overlapping standard-deviation error bars indicate that the pattern is larger than the variation among replicates. Dilution, dispersion and biological uptake provide plausible explanations for the decline. However, the data demonstrate a spatial association rather than proving that distance alone caused the change because discharge, tributary inputs and local vegetation were not measured quantitatively. Within the sampled reach and conditions, nitrate concentration showed a clear negative relationship with downstream distance.",
+      evaluation: "The method produced consistent replicate readings and used the same equipment and collection window at every site, strengthening reliability. Five distances provided enough spatial coverage to identify a clear pattern. Validity was reduced by using only one sampling day and by estimating rather than measuring flow conditions. The colorimetric kit was appropriate for field comparison but had lower precision than laboratory spectrophotometry. The conclusion is therefore strong for this stream reach on the sampling date but should not be generalized to different seasons or rainfall conditions.",
+      weaknessesLimitations: "First, sampling on one dry-weather morning does not represent seasonal or storm-related nitrate variation. Second, stream discharge and tributary inflow were not measured, so dilution could not be separated from biological uptake. Third, the 0.1 mg/L resolution and visual color matching of the field kit may introduce observer uncertainty. Fourth, there was no upstream reference site, which limits comparison with background nitrate concentration before the agricultural drain.",
+      improvements: "Repeat the investigation monthly and before and after rainfall to evaluate temporal variation. Measure stream width, depth and velocity at every site so nitrate concentration can be interpreted alongside discharge. Analyze samples with a calibrated spectrophotometer and include quality-control standards to improve precision. Add at least two upstream reference sites and increase replication from three to five samples per distance. These changes would distinguish background conditions from drain inputs and improve the reliability and scope of the conclusion.",
+      bibliography: "U.S. Environmental Protection Agency. (n.d.). Nutrient pollution. https://www.epa.gov/nutrientpollution\nU.S. Geological Survey. (n.d.). Nitrogen and water. Water Science School. https://www.usgs.gov/water-science-school/science/nitrogen-and-water\nCarpenter, S. R., Caraco, N. F., Correll, D. L., Howarth, R. W., Sharpley, A. N., & Smith, V. H. (1998). Nonpoint pollution of surface waters with phosphorus and nitrogen. Ecological Applications, 8(3), 559-568."
     },
     tables: {
       variables: [{
         title: "Table 1. Variables Selected for the Investigation",
         headers: ["Variable Type", "Variable", "Units", "Range / Effect and Control"],
         rows: [
-          ["Independent Variable", "Distance downstream", "m", "Five selected distances"],
-          ["Dependent Variable", "Nitrate concentration", "mg/L", "Measured with the same calibrated method"],
-          ["Control Variable", "Sampling depth", "cm", "Use the same depth at every site"],
-          ["Control Variable", "Sampling period", "time", "Collect all samples within one planned window"]
+          ["Independent Variable", "Distance downstream from drain", "m", "0, 25, 50, 100 and 200 m, measured with a tape"],
+          ["Dependent Variable", "Nitrate concentration", "mg/L", "Three measurements per site using the same calibrated kit"],
+          ["Control Variable", "Sampling depth", "cm", "Approximately 10 cm below the surface at every site"],
+          ["Control Variable", "Collection period", "time", "All samples collected between 09:00 and 11:00"],
+          ["Control Variable", "Analytical procedure", "method", "Same kit, reaction time, sample volume and viewing conditions"]
         ]
       }],
       rawData: [{
         title: "Table 2. Raw Nitrate Measurements",
         headers: ["Trial", "Distance (m)", "Nitrate (mg/L)", "Uncertainty (mg/L)", "Qualitative observations"],
         rows: [
-          ["Trial 1", "0", "", "", ""],
-          ["Trial 2", "0", "", "", ""],
-          ["Trial 3", "0", "", "", ""]
+          ["Trial 1", "0", "8.2", "+/- 0.1", "Clear water; steady flow"],
+          ["Trial 2", "0", "8.0", "+/- 0.1", "Clear water; steady flow"],
+          ["Trial 3", "0", "8.4", "+/- 0.1", "Clear water; steady flow"],
+          ["Trial 1", "25", "7.1", "+/- 0.1", "Clear water"],
+          ["Trial 2", "25", "7.3", "+/- 0.1", "Clear water"],
+          ["Trial 3", "25", "7.0", "+/- 0.1", "Clear water"],
+          ["Trial 1", "50", "5.9", "+/- 0.1", "Clear water"],
+          ["Trial 2", "50", "6.1", "+/- 0.1", "Clear water"],
+          ["Trial 3", "50", "6.0", "+/- 0.1", "Clear water"],
+          ["Trial 1", "100", "4.3", "+/- 0.1", "Slight turbidity near tributary"],
+          ["Trial 2", "100", "4.5", "+/- 0.1", "Slight turbidity near tributary"],
+          ["Trial 3", "100", "4.4", "+/- 0.1", "Slight turbidity near tributary"],
+          ["Trial 1", "200", "3.1", "+/- 0.1", "Moderate bank vegetation"],
+          ["Trial 2", "200", "3.0", "+/- 0.1", "Moderate bank vegetation"],
+          ["Trial 3", "200", "3.2", "+/- 0.1", "Moderate bank vegetation"]
         ]
       }],
       processedData: [{
         title: "Table 3. Processed Nitrate Results",
         headers: ["Trial", "Distance (m)", "Mean nitrate (mg/L)", "Spread / uncertainty", "Interpretation"],
-        rows: [["Mean", "0", "", "", ""]]
+        rows: [
+          ["Mean", "0", "8.20", "SD = 0.20 mg/L", "Highest concentration at drain"],
+          ["Mean", "25", "7.13", "SD = 0.15 mg/L", "Concentration begins to decline"],
+          ["Mean", "50", "6.00", "SD = 0.10 mg/L", "Continued downstream decline"],
+          ["Mean", "100", "4.40", "SD = 0.10 mg/L", "Lower concentration after mixing"],
+          ["Mean", "200", "3.10", "SD = 0.10 mg/L", "Approximately 62% below 0 m"]
+        ]
       }]
     }
   };
