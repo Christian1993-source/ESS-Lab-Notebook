@@ -58,7 +58,7 @@ sectionOrder.forEach((section) => {
 
 const PROGRAM_CONFIGS = {
   ess: {
-    name: "ESS",
+    name: "DP ESS",
     fullName: "Environmental Systems and Societies HL",
     sections: [
       "backgroundInformation", "researchQuestion", "alternateHypothesis", "nullHypothesis", "strategy",
@@ -121,8 +121,6 @@ localStorage.setItem(PROGRAM_KEY, state.program);
 
 const elements = {
   title: document.getElementById("title"),
-  teacher: document.getElementById("teacher"),
-  studentName: document.getElementById("studentName"),
   date: document.getElementById("date"),
   wordCount: document.getElementById("wordCount"),
   classCode: document.getElementById("classCode"),
@@ -330,14 +328,14 @@ function normalizeTableList(tableValue, tableKey = "generic") {
   return defaultTableList(tableKey);
 }
 
-function maybeStartTimerFromStudentName() {
+function maybeStartTimerFromTitle() {
   if (state.status === "Submitted") {
     return;
   }
   if (state.startedAt > 0) {
     return;
   }
-  if (!elements.studentName.value.trim()) {
+  if (!elements.title.value.trim()) {
     return;
   }
 
@@ -346,15 +344,15 @@ function maybeStartTimerFromStudentName() {
 }
 
 function attachInputListeners() {
-  const standardInputs = [elements.title, elements.teacher, elements.studentName, elements.date, elements.wordCount, elements.classCode, ...Object.values(sectionInputs)];
+  const standardInputs = [elements.title, elements.date, elements.wordCount, elements.classCode, ...Object.values(sectionInputs)];
 
   standardInputs.forEach((input) => {
     input.addEventListener("input", () => {
       if (state.status === "Submitted") {
         return;
       }
-      if (input === elements.studentName) {
-        maybeStartTimerFromStudentName();
+      if (input === elements.title) {
+        maybeStartTimerFromTitle();
       }
       if (input === elements.classCode) {
         state.classCode = input.value.trim().toUpperCase();
@@ -620,10 +618,8 @@ function getEssExampleReport() {
     id: state.reportId,
     accessToken: state.reportToken,
     teacherEmail: "",
-    teacher: "",
     startedAt: 0,
     title: "Effect of Distance from an Agricultural Drain on Stream Nitrate Concentration",
-    studentName: "xyz123",
     wordCount: "2450",
     date: "2026-09-01",
     classCode: state.classCode,
@@ -725,13 +721,11 @@ function resetAllReport() {
 
   applyReportToUI({
     id: state.reportId,
-    teacher: "",
     classCode: "",
     program: state.program,
     activeSections: state.activeSections,
     blockedAttempts: 0,
     title: "",
-    studentName: "",
     wordCount: "",
     date: "",
     status: "Draft",
@@ -833,11 +827,9 @@ function generateBasicPdfBlob(report) {
   const printableSections = buildPrintableSections(report);
   const lines = [];
   lines.push(report.title || "Lab Report");
-  lines.push(`IB Candidate Code: ${report.studentName || ""}`);
-  lines.push(`Group Candidate Code(s): ${report.teacher || "Not applicable"}`);
   lines.push(`Date: ${report.date || ""}`);
   lines.push(`Number of Words: ${report.wordCount || ""}`);
-  lines.push(`Report Format: ESS HL`);
+  lines.push(`Report Format: DP ESS`);
   lines.push(`Class Code: ${report.classCode || ""}`);
   lines.push(`Writing Integrity: ${report.blockedAttempts || 0} blocked attempt(s)`);
   lines.push(`Time Spent: ${formatDuration(report.timeSpentSeconds || getTimeSpentSeconds())}`);
@@ -946,15 +938,9 @@ function generatePdfInBrowser(report) {
   };
 
   drawParagraph(report.title || "Lab Report", { bold: true, size: 20, lineHeight: 24, align: "center" });
-  drawParagraph(`IB Candidate Code: ${report.studentName || ""}`, {
-    size: 12,
-    align: "center",
-    lineHeight: 16
-  });
-  drawParagraph(`Group Candidate Code(s): ${report.teacher || "Not applicable"}`, { size: 12, align: "center", lineHeight: 16 });
   drawParagraph(`Date: ${report.date || ""}`, { size: 12, align: "center", lineHeight: 16 });
   drawParagraph(`Number of Words: ${report.wordCount || ""}`, { size: 12, align: "center", lineHeight: 16 });
-  drawParagraph(`Report Format: ESS HL  |  Class Code: ${report.classCode || ""}`, {
+  drawParagraph(`Report Format: DP ESS  |  Class Code: ${report.classCode || ""}`, {
     size: 11,
     align: "center",
     lineHeight: 15
@@ -1445,13 +1431,11 @@ function collectReport() {
     id: state.reportId,
     accessToken: state.reportToken,
     teacherEmail: "",
-    teacher: elements.teacher.value.trim(),
     classCode: state.classCode || elements.classCode.value.trim().toUpperCase(),
     program: state.program,
     activeSections: state.activeSections,
     blockedAttempts: state.blockedAttempts,
     title: elements.title.value.trim(),
-    studentName: elements.studentName.value.trim(),
     wordCount: elements.wordCount.value.trim(),
     date: elements.date.value,
     startedAt: state.startedAt,
@@ -1499,9 +1483,7 @@ function applyReportToUI(report) {
   }));
   localStorage.setItem(PROGRAM_KEY, state.program);
 
-  elements.teacher.value = normalizedReport.teacher || "";
   elements.title.value = normalizedReport.title || "";
-  elements.studentName.value = normalizedReport.studentName || "";
   elements.date.value = normalizedReport.date || "";
   elements.wordCount.value = normalizedReport.wordCount || "";
   elements.classCode.value = state.classCode;
@@ -1679,8 +1661,8 @@ async function submitFinalReport() {
     elements.classCode.focus();
     return;
   }
-  if (!report.title || !report.studentName || !report.date || !report.wordCount) {
-    window.alert("Title of Investigation, IB Candidate Code, Date, and Number of Words are required.");
+  if (!report.title || !report.date || !report.wordCount) {
+    window.alert("Title of Investigation, Date, and Number of Words are required.");
     return;
   }
 

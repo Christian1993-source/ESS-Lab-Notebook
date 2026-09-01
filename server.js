@@ -482,15 +482,9 @@ function generatePdf(report) {
       align: "center"
     });
     doc.moveDown(0.3);
-    doc.font("Times-Roman").fontSize(12).fillColor("#111111").text(`IB Candidate Code: ${report.studentName}`, {
-      align: "center"
-    });
-    doc.font("Times-Roman").fontSize(12).fillColor("#111111").text(`Group Candidate Code(s): ${report.teacher || "Not applicable"}`, {
-      align: "center"
-    });
     doc.text(`Date: ${report.date}`, { align: "center" });
     doc.text(`Number of Words: ${report.wordCount}`, { align: "center" });
-    doc.text(`Report Format: ESS HL | Class Code: ${report.classCode}`, { align: "center" });
+    doc.text(`Report Format: DP ESS | Class Code: ${report.classCode}`, { align: "center" });
     doc.fontSize(10).fillColor("#4b5563").text(`Writing integrity: ${report.blockedAttempts} blocked attempt(s)`, { align: "center" });
     doc.text(`Time Spent: ${formatDuration(report.timeSpentSeconds)}`, { align: "center" });
     doc.moveDown(1);
@@ -539,9 +533,6 @@ function validateSubmitFields(report) {
   }
   if (!report.title) {
     return "Title of Investigation is required.";
-  }
-  if (!report.studentName) {
-    return "IB Candidate Code is required.";
   }
   if (!report.date) {
     return "Date is required.";

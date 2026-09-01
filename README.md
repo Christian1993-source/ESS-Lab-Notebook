@@ -4,7 +4,7 @@ Independent web platform for drafting Environmental Systems and Societies HL int
 
 ## Report structure
 
-- Investigation title, IB candidate code, date, word count, optional group candidate codes and class code.
+- Investigation title, date, word count, class code and DP ESS report format.
 - Background information and focused research question.
 - Alternate and null hypotheses.
 - Environmental strategy and stakeholder-perspective tension.
