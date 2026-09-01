@@ -31,7 +31,7 @@ const sectionOrder = [
     label: "Processing Raw Data"
   },
   { type: "text", key: "presentingProcessedData", label: "Presenting Processed Data" },
-  { type: "tool", key: "analysisConclusion", label: "Scatter Plot & Error Bars Graph Lab" },
+  { type: "tool", key: "analysisConclusion", label: "Presenting Processed Data" },
   { type: "text", key: "evaluation", label: "Evaluation" },
   { type: "text", key: "weaknessesLimitations", label: "Weaknesses and Limitations" },
   { type: "text", key: "improvements", label: "Improving the Investigation" },
