@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ESS HL internal assessment laboratory notebook and report builder." />
+    <title>ESS Lab Notebook</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="atlas.css" />
+  </head>
+  <body class="program-ess">
+    <div class="page-shell">
+      <header class="hero main-hero">
+        <div class="hero-content">
+          <h1 class="brand-title"><span>ESS LAB</span><span>NOTEBOOK</span></h1>
+        </div>
+        <div class="hero-media">
+          <div class="hero-frame">
+            <img src="lab-hero.jpg" alt="Environmental science laboratory illustration" class="hero-image" loading="eager" decoding="async" />
+          </div>
+        </div>
+      </header>
+
+      <section class="session-launcher program-launcher" aria-labelledby="sessionTitle">
+        <div class="session-copy">
+          <p class="eyebrow">ESS HL Internal Assessment</p>
+          <h2 id="sessionTitle">Start today’s ESS investigation</h2>
+          <p>Use the complete ESS report structure below. The maximum overall word count is 3,000 words.</p>
+        </div>
+        <div class="session-controls">
+          <div class="program-switch" role="group" aria-label="Report format">
+            <div class="program-option is-active" data-program="ess" aria-current="true">
+              <span class="program-mark">ESS</span>
+              <span><strong>Environmental Systems and Societies HL</strong><small>Internal assessment investigation</small></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card instructions-card">
+        <div class="card-header-row"><h2>How to Use This Platform</h2></div>
+        <ul class="instructions-list">
+          <li>Complete every applicable section and use evidence and citations where requested.</li>
+          <li>Use Save Draft to store progress locally in this browser, even without internet access.</li>
+          <li>Charts, diagrams, data tables, equations, calculations, citations, the bibliography and headers are excluded from the 3,000-word limit.</li>
+          <li>Click Download Final Report to generate the final PDF instantly.</li>
+        </ul>
+      </section>
+
+      <div class="content-grid">
+        <aside class="card outline-panel">
+          <div class="outline-heading">
+            <div><p class="eyebrow">Active structure</p><h2>Report Outline</h2></div>
+            <span id="programBadge" class="program-badge">ESS</span>
+          </div>
+          <ol id="outlineList"></ol>
+          <div id="removedSections" class="removed-sections" hidden>
+            <h3>Removed parts</h3>
+            <div id="restoreSectionButtons"></div>
+          </div>
+        </aside>
+
+        <main class="main-column">
+          <section class="card" id="studentInfo">
+            <h2>Investigation Information</h2>
+            <div class="student-grid">
+              <div><label for="title">Title of Investigation *</label><input id="title" type="text" /></div>
+              <div><label for="studentName">IB Candidate Code *</label><input id="studentName" type="text" autocomplete="off" /></div>
+              <div><label for="date">Date *</label><input id="date" type="date" /></div>
+              <div><label for="wordCount">Number of Words *</label><input id="wordCount" type="number" min="0" max="3000" inputmode="numeric" /></div>
+              <div><label for="teacher">Group Candidate Code(s), if applicable</label><input id="teacher" type="text" /></div>
+              <div><label for="classCode">Class Code *</label><input id="classCode" type="text" maxlength="24" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Code provided in class" /></div>
+              <div><label for="selectedProgram">Report Format</label><input id="selectedProgram" type="text" value="ESS HL" readonly aria-readonly="true" /></div>
+            </div>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="backgroundInformation" id="sec-backgroundInformation">
+            <div class="section-heading"><div><p class="criterion-label">Research Question and Inquiry - 4 marks</p><h2>I. Background Information</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">Explain the local or global environmental topic, relevant theory, expected values, prior research and why the investigation matters. Use viable citations and label any figures.</p>
+            <textarea id="section-backgroundInformation"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="researchQuestion" id="sec-researchQuestion">
+            <div class="section-heading"><div><p class="criterion-label">Research Question and Inquiry - 4 marks</p><h2>II. Research Question</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">State a focused question that identifies the dependent and independent variables, or two correlated variables, and the environmental system being investigated.</p>
+            <textarea id="section-researchQuestion"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="alternateHypothesis" id="sec-alternateHypothesis">
+            <div class="section-heading"><div><p class="criterion-label">Research Question and Inquiry - 4 marks</p><h2>III. H1 Alternate Hypothesis</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">Predict the effect or relationship and explain the scientific rationale with citations.</p>
+            <textarea id="section-alternateHypothesis"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="nullHypothesis" id="sec-nullHypothesis">
+            <div class="section-heading"><div><p class="criterion-label">Research Question and Inquiry - 4 marks</p><h2>IV. H0 Null Hypothesis</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">State that the treatment has no effect or that there is no significant relationship between the variables.</p>
+            <textarea id="section-nullHypothesis"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="strategy" id="sec-strategy">
+            <div class="section-heading"><div><p class="criterion-label">Strategy - 4 marks</p><h2>V. Environmental Strategy</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">Describe an existing or developing strategy linked credibly to the research question, then explain a tension between economic, social, cultural, political or environmental perspectives.</p>
+            <textarea id="section-strategy"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="methodology" id="sec-methodology">
+            <div class="section-heading"><div><p class="criterion-label">Method - 4 marks</p><h2>VI. Methodology</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">Describe a repeatable method, including setup, contribution, sampling or surveying techniques and data collection. Include sufficient trials or responses to answer the research question.</p>
+            <textarea id="section-methodology"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="variables" id="sec-variables">
+            <div class="section-heading"><div><p class="criterion-label">Method - 4 marks</p><h2>VII. Variables</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <label for="section-variablesNotes">Variable rationale and control notes</label>
+            <textarea id="section-variablesNotes" class="data-notes"></textarea>
+            <div id="variablesEditor" class="table-editor"></div>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="safetyEthicsEnvironment" id="sec-safetyEthicsEnvironment">
+            <div class="section-heading"><div><p class="criterion-label">Method - 4 marks</p><h2>VIII. Safety, Ethical and Environmental Issues</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">Address injury risks, human or animal ethics, voluntary and anonymous participation, environmental impacts and safe or ethical disposal.</p>
+            <textarea id="section-safetyEthicsEnvironment"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="rawData" id="sec-rawData">
+            <div class="section-heading"><div><p class="criterion-label">Treatment of Data - 6 marks</p><h2>IX. Raw Data</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">Include correct headings, units, uncertainties and consistent precision. Record relevant qualitative observations as well as quantitative data.</p>
+            <label for="section-rawDataNotes">Observations and raw-data notes</label>
+            <textarea id="section-rawDataNotes" class="data-notes"></textarea>
+            <div id="rawDataEditor" class="table-editor"></div>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="processedData" id="sec-processedData">
+            <div class="section-heading"><div><p class="criterion-label">Treatment of Data - 6 marks</p><h2>X. Processing Raw Data</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">Process quantitative data correctly and make raw and processed values clearly distinguishable. Include the method of processing and suitable calculations.</p>
+            <label for="section-processedDataNotes">Processing and analysis notes</label>
+            <textarea id="section-processedDataNotes" class="data-notes"></textarea>
+            <label for="section-processedDataSampleCalculations">Sample Calculations</label>
+            <textarea id="section-processedDataSampleCalculations" class="data-notes"></textarea>
+            <div id="processedDataEditor" class="table-editor"></div>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="presentingProcessedData" id="sec-presentingProcessedData">
+            <div class="section-heading"><div><p class="criterion-label">Treatment of Data - 6 marks</p><h2>XI. Presenting Processed Data</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">Describe graphs or other representations, label axes and units, address error bars or best-fit lines, and explain patterns, trends and outliers.</p>
+            <textarea id="section-presentingProcessedData"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="analysisConclusion" id="sec-analysisConclusion">
+            <div class="section-heading"><div><p class="criterion-label">Analysis and Conclusion - 6 marks</p><h2>XII. Analysis and Conclusion</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">Explain relevant patterns and trends, including bias, reliability, validity and uncertainty. Answer the research question and support the conclusion with processed data.</p>
+            <textarea id="section-analysisConclusion"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="evaluation" id="sec-evaluation">
+            <div class="section-heading"><div><p class="criterion-label">Evaluation - 6 marks</p><h2>XIII. Evaluation</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">Evaluate the quality of the procedure and data, how methodological weaknesses affect the conclusion and any unresolved questions arising from the investigation.</p>
+            <textarea id="section-evaluation"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="weaknessesLimitations" id="sec-weaknessesLimitations">
+            <div class="section-heading"><div><p class="criterion-label">Evaluation - 6 marks</p><h2>XIV. Weaknesses and Limitations</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">Identify significant weaknesses and limitations in the process, equipment, range, system or assumptions, and explain the significance of each.</p>
+            <textarea id="section-weaknessesLimitations"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="improvements" id="sec-improvements">
+            <div class="section-heading"><div><p class="criterion-label">Evaluation - 6 marks</p><h2>XV. Improving the Investigation</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">For each weakness or limitation, propose and evaluate a realistic improvement that reduces random or systematic uncertainty or improves data quality.</p>
+            <textarea id="section-improvements"></textarea>
+          </section>
+
+          <section class="card report-section" data-program="ess" data-section-key="bibliography" id="sec-bibliography">
+            <div class="section-heading"><div><p class="criterion-label">Minimum 3 sources</p><h2>XVI. Bibliography</h2></div><button type="button" class="section-action" data-action="remove-section">Remove part</button></div>
+            <p class="section-prompt">List every source used. Use APA 7 or another acceptable citation method.</p>
+            <textarea id="section-bibliography"></textarea>
+          </section>
+
+          <section class="card action-card">
+            <div class="button-row">
+              <button id="resetBtn" class="btn btn-secondary">Reset All</button>
+              <button id="loadExampleBtn" class="btn btn-secondary">Load Example</button>
+              <button id="saveDraftBtn" class="btn">Save Draft</button>
+              <button id="loadSavedDraftBtn" class="btn btn-secondary">Load Saved Draft</button>
+              <button id="submitBtn" class="btn btn-strong">Download Final Report</button>
+            </div>
+            <p id="saveState" class="meta"></p>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="vendor/jspdf.umd.min.js"></script>
+    <script src="vendor/jspdf.plugin.autotable.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "ess-lab-notebook",
+  "version": "1.0.0",
+  "description": "ESS HL internal assessment notebook with protected writing, autosave and PDF export.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node --check server.js && node --check app.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.58.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jspdf": "4.2.1",
+    "jspdf-autotable": "5.0.8",
+    "pdfkit": "^0.17.2"
+  }
+}
