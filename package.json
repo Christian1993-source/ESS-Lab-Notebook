@@ -1,7 +1,7 @@
 {
   "name": "ess-lab-notebook",
   "version": "1.0.0",
-  "description": "ESS HL internal assessment notebook with protected writing, autosave and PDF export.",
+  "description": "ESS internal assessment notebook with protected writing, autosave and PDF export.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

@@ -1,6 +1,6 @@
 # ESS Lab Notebook
 
-Independent web platform for drafting Environmental Systems and Societies HL internal assessment reports and downloading the final report as a PDF.
+Independent web platform for drafting Environmental Systems and Societies internal assessment reports and downloading the final report as a PDF.
 
 ## Report structure
 

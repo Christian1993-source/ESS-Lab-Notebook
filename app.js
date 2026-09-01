@@ -58,7 +58,7 @@ sectionOrder.forEach((section) => {
 const PROGRAM_CONFIGS = {
   ess: {
     name: "DP ESS",
-    fullName: "Environmental Systems and Societies HL",
+    fullName: "Environmental Systems and Societies",
     sections: [
       "backgroundInformation", "researchQuestion", "alternateHypothesis", "nullHypothesis", "strategy",
       "methodology", "variables", "safetyEthicsEnvironment", "rawData", "processedData",
