@@ -122,7 +122,6 @@ localStorage.setItem(PROGRAM_KEY, state.program);
 const elements = {
   title: document.getElementById("title"),
   date: document.getElementById("date"),
-  wordCount: document.getElementById("wordCount"),
   classCode: document.getElementById("classCode"),
   selectedProgram: document.getElementById("selectedProgram"),
   programBadge: document.getElementById("programBadge"),
@@ -344,7 +343,7 @@ function maybeStartTimerFromTitle() {
 }
 
 function attachInputListeners() {
-  const standardInputs = [elements.title, elements.date, elements.wordCount, elements.classCode, ...Object.values(sectionInputs)];
+  const standardInputs = [elements.title, elements.date, elements.classCode, ...Object.values(sectionInputs)];
 
   standardInputs.forEach((input) => {
     input.addEventListener("input", () => {
@@ -620,7 +619,6 @@ function getEssExampleReport() {
     teacherEmail: "",
     startedAt: 0,
     title: "Effect of Distance from an Agricultural Drain on Stream Nitrate Concentration",
-    wordCount: "2450",
     date: "2026-09-01",
     classCode: state.classCode,
     program: "ess",
@@ -726,7 +724,6 @@ function resetAllReport() {
     activeSections: state.activeSections,
     blockedAttempts: 0,
     title: "",
-    wordCount: "",
     date: "",
     status: "Draft",
     sections: {},
@@ -828,7 +825,6 @@ function generateBasicPdfBlob(report) {
   const lines = [];
   lines.push(report.title || "Lab Report");
   lines.push(`Date: ${report.date || ""}`);
-  lines.push(`Number of Words: ${report.wordCount || ""}`);
   lines.push(`Report Format: DP ESS`);
   lines.push(`Class Code: ${report.classCode || ""}`);
   lines.push(`Writing Integrity: ${report.blockedAttempts || 0} blocked attempt(s)`);
@@ -939,7 +935,6 @@ function generatePdfInBrowser(report) {
 
   drawParagraph(report.title || "Lab Report", { bold: true, size: 20, lineHeight: 24, align: "center" });
   drawParagraph(`Date: ${report.date || ""}`, { size: 12, align: "center", lineHeight: 16 });
-  drawParagraph(`Number of Words: ${report.wordCount || ""}`, { size: 12, align: "center", lineHeight: 16 });
   drawParagraph(`Report Format: DP ESS  |  Class Code: ${report.classCode || ""}`, {
     size: 11,
     align: "center",
@@ -1436,7 +1431,6 @@ function collectReport() {
     activeSections: state.activeSections,
     blockedAttempts: state.blockedAttempts,
     title: elements.title.value.trim(),
-    wordCount: elements.wordCount.value.trim(),
     date: elements.date.value,
     startedAt: state.startedAt,
     timeSpentSeconds: getTimeSpentSeconds(),
@@ -1485,7 +1479,6 @@ function applyReportToUI(report) {
 
   elements.title.value = normalizedReport.title || "";
   elements.date.value = normalizedReport.date || "";
-  elements.wordCount.value = normalizedReport.wordCount || "";
   elements.classCode.value = state.classCode;
 
   sectionKeys.forEach((sectionKey) => {
@@ -1661,8 +1654,8 @@ async function submitFinalReport() {
     elements.classCode.focus();
     return;
   }
-  if (!report.title || !report.date || !report.wordCount) {
-    window.alert("Title of Investigation, Date, and Number of Words are required.");
+  if (!report.title || !report.date) {
+    window.alert("Title of Investigation and Date are required.");
     return;
   }
 

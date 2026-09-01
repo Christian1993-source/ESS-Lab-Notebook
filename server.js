@@ -183,7 +183,6 @@ function sanitizeReport(rawReport) {
     blockedAttempts: Math.max(0, Math.floor(cleanNumber(report.blockedAttempts))),
     title: cleanString(report.title),
     studentName: cleanString(report.studentName),
-    wordCount: cleanString(String(report.wordCount || "")).slice(0, 5),
     date: cleanString(report.date),
     startedAt: cleanNumber(report.startedAt),
     timeSpentSeconds: cleanNumber(report.timeSpentSeconds),
@@ -483,7 +482,6 @@ function generatePdf(report) {
     });
     doc.moveDown(0.3);
     doc.text(`Date: ${report.date}`, { align: "center" });
-    doc.text(`Number of Words: ${report.wordCount}`, { align: "center" });
     doc.text(`Report Format: DP ESS | Class Code: ${report.classCode}`, { align: "center" });
     doc.fontSize(10).fillColor("#4b5563").text(`Writing integrity: ${report.blockedAttempts} blocked attempt(s)`, { align: "center" });
     doc.text(`Time Spent: ${formatDuration(report.timeSpentSeconds)}`, { align: "center" });
@@ -536,9 +534,6 @@ function validateSubmitFields(report) {
   }
   if (!report.date) {
     return "Date is required.";
-  }
-  if (!report.wordCount) {
-    return "Number of Words is required.";
   }
   return "";
 }
