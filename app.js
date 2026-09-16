@@ -1,4 +1,5 @@
 const STORAGE_KEY = "essLabNotebook.draft";
+const SESSION_STORAGE_KEY = "essLabNotebook.currentSession";
 const REPORT_ID_KEY = "essLabNotebook.reportId";
 const REPORT_STARTED_AT_KEY = "essLabNotebook.startedAt";
 const PROGRAM_KEY = "essLabNotebook.program";
@@ -166,10 +167,12 @@ function init() {
   renderTableEditor("variables", elements.variablesEditor);
   renderTableEditor("rawData", elements.rawDataEditor);
   renderTableEditor("processedData", elements.processedDataEditor);
-  const localDraft = safeParseLocalDraft();
-  if (localDraft) {
-    applyReportToUI(localDraft);
-  }
+  resetAllReport({
+    requireConfirmation: false,
+    clearSavedDraft: false,
+    restartTimer: false,
+    statusMessage: "New blank report started automatically."
+  });
   renderProgramUI();
   updateStatusBadge();
   setFormLocked(state.status === "Submitted");
@@ -701,8 +704,13 @@ function loadExampleReport() {
   queueIdleSave();
 }
 
-function resetAllReport() {
-  if (!window.confirm("Reset all fields and start a new report?")) {
+function resetAllReport({
+  requireConfirmation = true,
+  clearSavedDraft = requireConfirmation,
+  restartTimer = true,
+  statusMessage = "Report reset. You can start a new draft."
+} = {}) {
+  if (requireConfirmation && !window.confirm("Are you sure you want to delete all information? This action cannot be undone.")) {
     return;
   }
 
@@ -728,7 +736,10 @@ function resetAllReport() {
     processedData: defaultTableList("processedData")
   };
 
-  localStorage.removeItem(STORAGE_KEY);
+  sessionStorage.removeItem(SESSION_STORAGE_KEY);
+  if (clearSavedDraft) {
+    localStorage.removeItem(STORAGE_KEY);
+  }
   localStorage.setItem(REPORT_ID_KEY, state.reportId);
   localStorage.setItem(REPORT_TOKEN_KEY, state.reportToken);
   localStorage.setItem(REPORT_STARTED_AT_KEY, String(state.startedAt));
@@ -751,11 +762,13 @@ function resetAllReport() {
     startedAt: state.startedAt
   });
 
-  state.intervalTimer = setInterval(() => {
-    void saveDraft("interval");
-  }, 15000);
+  if (restartTimer) {
+    state.intervalTimer = setInterval(() => {
+      void saveDraft("interval");
+    }, 15000);
+  }
 
-  elements.saveState.textContent = "Report reset. You can start a new draft.";
+  elements.saveState.textContent = statusMessage;
 }
 
 function tableHasContent(table, tableKey = "generic") {
@@ -1516,8 +1529,24 @@ function applyReportToUI(report) {
 }
 
 function persistLocalBackup() {
-  localStorage.setItem(REPORT_ID_KEY, state.reportId);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(collectReport()));
+  try {
+    localStorage.setItem(REPORT_ID_KEY, state.reportId);
+    sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(collectReport()));
+    return true;
+  } catch (_error) {
+    elements.saveState.textContent = "The current session backup could not be updated. Keep this page open or use Save Draft.";
+    return false;
+  }
+}
+
+function persistSavedDraft(report) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(report));
+    return true;
+  } catch (_error) {
+    elements.saveState.textContent = "Draft could not be saved on this device. Browser storage may be full.";
+    return false;
+  }
 }
 
 function loadLocalDraft() {
@@ -1598,12 +1627,17 @@ async function saveDraft(trigger) {
     return;
   }
 
+  if (trigger === "manual" && !persistSavedDraft(collectReport())) return;
+
   if (state.isSaving) {
     state.pendingSave = true;
+    if (trigger === "manual") {
+      elements.saveState.textContent = `Draft saved locally at ${new Date().toLocaleTimeString()}.`;
+    }
     return;
   }
 
-  persistLocalBackup();
+  if (!persistLocalBackup()) return;
   const report = collectReport();
   state.isSaving = true;
 

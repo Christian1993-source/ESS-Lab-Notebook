@@ -618,6 +618,13 @@ textarea {
   margin-bottom: 12px;
 }
 
+.data-loss-warning {
+  margin: 0 0 16px;
+  color: #b42318;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
 .student-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

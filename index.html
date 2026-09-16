@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="ESS internal assessment laboratory notebook and report builder." />
+    <meta name="notebook-release" content="20260916-draft-persistence-1" />
     <title>ESS Lab Notebook</title>
-    <link rel="stylesheet" href="styles.css?v=roman-outline-1" />
+    <link rel="stylesheet" href="styles.css?v=20260916-draft-persistence-1" />
     <link rel="stylesheet" href="atlas.css" />
   </head>
   <body class="program-ess">
@@ -63,6 +64,7 @@
         <main class="main-column">
           <section class="card" id="studentInfo">
             <h2>Investigation Information</h2>
+            <p class="data-loss-warning">(Important: Refreshing this page or closing the tab clears the current screen. To continue later, click Save Draft before leaving, then use Load Saved Draft when you return on this browser and device.)</p>
             <div class="student-grid">
               <div><label for="title">Title of Investigation *</label><input id="title" type="text" /></div>
               <div><label for="date">Date *</label><input id="date" type="date" /></div>
@@ -195,6 +197,6 @@
 
     <script src="vendor/jspdf.umd.min.js"></script>
     <script src="vendor/jspdf.plugin.autotable.min.js"></script>
-    <script src="app.js?v=enhanced-example-1"></script>
+    <script src="app.js?v=20260916-draft-persistence-1"></script>
   </body>
 </html>
