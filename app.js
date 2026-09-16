@@ -129,7 +129,6 @@ const elements = {
   removedSections: document.getElementById("removedSections"),
   restoreSectionButtons: document.getElementById("restoreSectionButtons"),
   resetBtn: document.getElementById("resetBtn"),
-  loadExampleBtn: document.getElementById("loadExampleBtn"),
   saveDraftBtn: document.getElementById("saveDraftBtn"),
   loadSavedDraftBtn: document.getElementById("loadSavedDraftBtn"),
   submitBtn: document.getElementById("submitBtn"),
@@ -398,12 +397,6 @@ function attachInputListeners() {
     resetAllReport();
   });
 
-  if (elements.loadExampleBtn) {
-    elements.loadExampleBtn.addEventListener("click", () => {
-      loadExampleReport();
-    });
-  }
-
   elements.submitBtn.addEventListener("click", () => {
     void submitFinalReport();
   });
@@ -457,7 +450,6 @@ function renderProgramUI() {
   });
   elements.programBadge.textContent = config.name;
   elements.selectedProgram.value = config.name;
-  elements.loadExampleBtn.hidden = false;
   elements.outlineList.replaceChildren();
   const studentItem = document.createElement("li");
   studentItem.innerHTML = '<a href="#studentInfo">Investigation Information</a>';
